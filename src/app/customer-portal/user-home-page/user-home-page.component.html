@@ -1,0 +1,23 @@
+<button mat-raised-button color="accent" (click)="bookAnAppointment()">Book an Appointment</button>
+
+<div class="container" ng-container>
+  <mat-grid-list cols="4" rowHeight="1:1" [gutterSize]="'20px'">
+
+  <mat-grid-tile *ngFor = "let service of services">
+
+    <mat-card class="example-card" >
+    <img mat-card-image src={{service.image}}>
+    <!-- <mat-card-content>
+      <p>
+        {{service.ServiceName}}  <br> <b>Price : Rs.{{service.PricePerHour}}</b>
+      </p>
+    </mat-card-content> -->
+    <!-- <mat-card-actions class="button-container"> -->
+      <!-- <a mat-button  (click)="addToItems(ps)">Add To Cart</a>
+      <button mat-button (click)="goToProduct(ps)">View</button> -->
+    <!-- </mat-card-actions> -->
+  </mat-card>
+</mat-grid-tile>
+
+</mat-grid-list>
+</div>

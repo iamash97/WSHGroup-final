@@ -1,0 +1,38 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 3%;
+}
+
+.addressForm{
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.form-field{
+  display: block;
+}
+
+.address-card{
+max-width: 70%;
+height: 100%;
+position: relative;
+/* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 12), 0 5px 5px 0 rgba(100, 51, 74, 5); */
+background-color: pink;
+color: black;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin-left: auto;
+margin-right: auto;
+margin-top : 3%;
+margin-bottom: 5%;
+}

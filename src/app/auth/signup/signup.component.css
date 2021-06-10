@@ -1,0 +1,35 @@
+mat-card {
+  margin: auto;
+  margin-top: 2%;
+  width: 80%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+.signup_button {
+  width: 100%;
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 992px) {
+  mat-card {
+    margin: auto;
+    margin-top: 2%;
+    width: 80%;
+  }
+}
+
+/* On screens that are 450px or less, set the background color to olive */
+@media screen and (max-width: 450px) {
+  mat-card {
+    margin: auto;
+    margin-top: 2%;
+    width: 80%;
+  }
+}

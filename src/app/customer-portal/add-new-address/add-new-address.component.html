@@ -1,0 +1,121 @@
+<mat-card class="address-card">
+  <mat-card-header>
+    <mat-card-title class="card-container-center">Add New Address</mat-card-title>
+  </mat-card-header>
+<mat-card-content class="container">
+    <form class="addressForm" [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+      <table class="example-full-width" cellspacing="0">
+      <tr>
+          <td>
+          <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Door No.</mat-label>
+              <input  matInput formControlName="Door" placeholder="Door no."  name="Door" required >
+              <mat-error *ngIf="addressForm.controls.Door.touched && addressForm.controls.Door.invalid">
+                <span *ngIf="addressForm.controls.Door.errors.required">This field is mandatory.</span>
+              </mat-error>
+           </mat-form-field>
+          </td>
+          <td>
+           <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Street 1</mat-label>
+              <input  matInput formControlName="Street1" placeholder="Street 1" name="Street1" required >
+              <mat-error *ngIf="addressForm.controls.Street1.touched && addressForm.controls.Street1.invalid">
+                <span *ngIf="addressForm.controls.Street1.errors.required">This field is mandatory.</span>
+              </mat-error>
+           </mat-form-field>
+          </td>
+          </tr>
+          <tr>
+            <td>
+           <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Street 2</mat-label>
+              <input  matInput formControlName="Street2" placeholder="Street 2" name="Street2">
+           </mat-form-field>
+          </td>
+          <td>
+           <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Area</mat-label>
+              <input  matInput  formControlName="Area" placeholder="Area" name="Area" required>
+              <mat-error *ngIf="addressForm.controls.Area.touched && addressForm.controls.Area.invalid">
+                <span *ngIf="addressForm.controls.Area.errors.required">This field is mandatory.</span>
+              </mat-error>
+           </mat-form-field>
+          </td>
+          </tr>
+          <tr>
+            <td>
+           <mat-form-field class="full-width" appearance="outline">
+              <mat-label>City</mat-label>
+              <input  matInput formControlName="City" placeholder="City"  name="City" required>
+              <mat-error *ngIf="addressForm.controls.City.touched && addressForm.controls.City.invalid">
+                <span *ngIf="addressForm.controls.City.errors.required">This field is mandatory.</span>
+              </mat-error>
+           </mat-form-field>
+          </td>
+          <td>
+           <mat-form-field class="full-width" appearance="outline">
+              <mat-label>State</mat-label>
+              <input  matInput formControlName="State" placeholder="State"  name="State" required>
+              <mat-error *ngIf="addressForm.controls.State.touched && addressForm.controls.State.invalid">
+                <span *ngIf="addressForm.controls.State.errors.required">This field is mandatory.</span>
+              </mat-error>
+           </mat-form-field>
+          </td>
+          </tr>
+           <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Pincode</mat-label>
+              <input  matInput formControlName="Pincode" placeholder="Pincode"  name="Pincode" required>
+              <mat-error *ngIf="addressForm.controls.Pincode.touched && addressForm.controls.Pincode.invalid">
+                <span *ngIf="addressForm.controls.Pincode.errors.required">This field is mandatory.</span>
+                <span *ngIf="addressForm.controls.Contact.errors.pattern">This field is invalid.</span>
+              </mat-error>
+           </mat-form-field>
+           <tr>
+             <td>
+           <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Contact</mat-label>
+              <input  matInput formControlName="Contact" placeholder="Contact"  name="Contact" required>
+              <mat-error *ngIf="addressForm.controls.Contact.touched && addressForm.controls.Contact.invalid">
+                <span *ngIf="addressForm.controls.Contact.errors.required">This field is mandatory.</span>
+                <span *ngIf="addressForm.controls.Contact.errors.pattern">This field is invalid.</span>
+              </mat-error>
+           </mat-form-field>
+          </td>
+          <td>
+           <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Alternate Contact</mat-label>
+            <input  matInput formControlName="AlternateContact" placeholder="Alternate Contact"  name="AlternateContact">
+            <mat-error *ngIf="addressForm.controls.AlternateContact.touched && addressForm.controls.AlternateContact.invalid">
+                <span *ngIf="addressForm.controls.AlternateContact.errors.pattern">This field is invalid.</span>
+            </mat-error>
+         </mat-form-field>
+        </td>
+          </tr>
+         </table>
+    </form>
+    <mat-card-actions>
+        <button mat-raised-button type="submit" (click)="onSubmit()" color="primary">Add Address</button>
+        <!-- <button mat-raised-button (click)="goBack()" color="primary">Back To Addresses</button> -->
+      </mat-card-actions>
+  </mat-card-content>
+  </mat-card>
+
+
+    <table mat-table [dataSource]="address" class="mat-elevation-z8" >
+      <ng-container matColumnDef="Address">
+        <th mat-header-cell *matHeaderCellDef> Address </th>
+        <td mat-cell *matCellDef="let a"> {{a.DoorNo}}, {{a.Street1}}, {{a.Street2}}, {{a.Area}}, {{a.City}}, {{a.State}}, {{a.Pincode}} <br>
+          {{a.ContactNo}}, {{a.AltContactNo}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Cancel">
+        <th mat-header-cell *matHeaderCellDef> Delete </th>
+        <td mat-cell *matCellDef="let element">
+          <a mat-raised-button color="warn" (click)="deleteAddress(element.id)"> Delete </a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+<br>

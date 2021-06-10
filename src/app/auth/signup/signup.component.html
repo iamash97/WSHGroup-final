@@ -1,0 +1,35 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
+    <mat-form-field>
+      <input matInput name="FirstName" ngModel placeholder="First Name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="LastName" ngModel placeholder="Last Name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" name="Age" ngModel placeholder="Age" min="10" max="100" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="Email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
+      <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input type="password" name="UsrPwd" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
+      <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>User Role</mat-label>
+    <mat-select matNativeControl [(ngModel)]="UsrRole" ngModel name="UsrRole" required>
+      <mat-option [value]=1>
+        Service Provider
+      </mat-option>
+      <mat-option [value]=2>
+        Customer
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+    <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading" class="signup_button">Signup</button>
+  </form>
+</mat-card>
+

@@ -1,0 +1,38 @@
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" >
+
+
+  <ng-container matColumnDef="ServiceName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Service Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.ServiceName}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="PricePerHour">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Price Per Hour </th>
+    <td mat-cell *matCellDef="let element"> {{element.PricePerHour}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="IsActive">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> IsActive </th>
+    <ng-container *matCellDef="let element">
+      <td mat-cell *ngIf="element.IsActive == true"> Registered </td>
+      <td mat-cell *ngIf="element.IsActive == false"> Withdrawn </td>
+    </ng-container>
+  </ng-container>
+
+  <ng-container matColumnDef="Deactivate">
+    <th mat-header-cell *matHeaderCellDef> Register/Unregister </th>
+    <td mat-cell *matCellDef="let element">
+      <a mat-raised-button color="warn" *ngIf="element.IsActive==true" (click)="unregister(element)"> Withdraw </a>
+      <a mat-raised-button color="warn" *ngIf="element.IsActive==false" (click)="unregister(element)"> Register </a>
+    </td>
+  </ng-container>
+
+ <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

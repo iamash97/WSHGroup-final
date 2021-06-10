@@ -1,0 +1,53 @@
+<mat-toolbar>
+  <span>
+    <a routerLink="/userlist" *ngIf="UsrRole==0"><img src="../../assets/logo.png" class="logo"></a>
+    <a routerLink="/registeredservices" *ngIf="UsrRole==1"><img src="../../assets/logo.png" class="logo"></a>
+    <a routerLink="/userhomepage" *ngIf="UsrRole==2"><img src="../../assets/logo.png" class="logo"></a>
+  </span>
+  <span class="spacer"></span>
+  <ul>
+    <li *ngIf="userIsAuthenticated && UsrRole==0">
+      <a mat-button routerLink="/userlist" routerLinkActive="mat-accent">Users</a>
+    </li>
+    <li *ngIf="userIsAuthenticated && UsrRole==0">
+      <a mat-button routerLink="/servicelist" routerLinkActive="mat-accent">Services</a>
+    </li>
+    <li *ngIf="userIsAuthenticated && UsrRole==0">
+      <a mat-button routerLink="/serviceproviderlist" routerLinkActive="mat-accent">Service Providers</a>
+    </li>
+  </ul>
+  <ul>
+    <li *ngIf="userIsAuthenticated && UsrRole==2">
+      <a mat-button routerLink="/userhomepage" routerLinkActive="mat-accent">Home</a>
+    </li>
+    <li *ngIf="userIsAuthenticated && UsrRole==2">
+      <a mat-button routerLink="/newaddress" routerLinkActive="mat-accent">Add Address</a>
+    </li>
+    <li *ngIf="userIsAuthenticated && UsrRole==2">
+      <a mat-button routerLink="/userappointments" routerLinkActive="mat-accent">Appointments</a>
+    </li>
+  </ul>
+  <ul>
+    <li *ngIf="userIsAuthenticated && UsrRole==1">
+      <a mat-button routerLink="/registeredservices" routerLinkActive="mat-accent">Registered Services</a>
+    </li>
+    <li *ngIf="userIsAuthenticated && UsrRole==1">
+      <a mat-button routerLink="/spappointments" routerLinkActive="mat-accent">Appointment History</a>
+    </li>
+    <li *ngIf="userIsAuthenticated && UsrRole==1">
+      <a mat-button routerLink="/registernewservices" routerLinkActive="mat-accent">Register New Services</a>
+    </li>
+  </ul>
+  <span class="spacer"></span>
+  <ul>
+    <li *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
+    </li>
+    <li *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Signup</a>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <button mat-button (click)="onLogout()">Logout</button>
+    </li>
+  </ul>
+</mat-toolbar>

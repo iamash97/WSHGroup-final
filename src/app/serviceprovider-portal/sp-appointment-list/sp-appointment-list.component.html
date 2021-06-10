@@ -1,0 +1,61 @@
+<mat-form-field class="filter">
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+</mat-form-field>
+
+<div style="overflow-x:auto;">
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" >
+  <ng-container matColumnDef="Date">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.AppointmentDate}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="ServiceName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Service Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.ServiceName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="ClientName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Client Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.ClientFirstName}} {{element.ClientLastName}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="Address">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+    <td mat-cell *matCellDef="let element"> {{element.ClientAddressArea}} <br> {{element.ClientAddressContactNo}}  </td>
+  </ng-container>
+
+  <ng-container matColumnDef="TotalCost">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Cost </th>
+    <td mat-cell *matCellDef="let element"> {{element.TotalCost}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Status">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+    <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
+  </ng-container>
+
+  <!-- <ng-container matColumnDef="Status">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+    <ng-container *matCellDef="let element">
+      <td mat-cell *ngIf="element.IsPaid == true"> Payment Successful </td>
+      <td mat-cell *ngIf="element.IsPaid == false"> Payment Unsuccessful </td>
+    </ng-container>
+  </ng-container>  -->
+
+   <ng-container matColumnDef="Close">
+    <th mat-header-cell *matHeaderCellDef> Close Appointment </th>
+    <td mat-cell *matCellDef="let element">
+      <a mat-raised-button color="warn" *ngIf="element.Status == 'Closed' || element.Status == 'Cancelled' " (click)="close(element.appointments[0].id)" disabled> Close </a>
+      <a mat-raised-button color="warn" *ngIf="element.Status == 'In Progress'" (click)="close(element.id)"> Close </a>
+    </td>
+  </ng-container>
+  <!--  -->
+ <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>
+
+<!-- <mat-paginator [length]="totalAppointments" [pageSize]="appointmentsPerPage" [pageSizeOptions]="[5, 10, 25, 100]" (page)="onChangedPage($event)"></mat-paginator> -->
+

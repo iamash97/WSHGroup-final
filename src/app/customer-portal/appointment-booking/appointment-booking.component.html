@@ -1,0 +1,78 @@
+<div class="container">
+  <mat-card class="address-card">
+  <mat-card-header>
+    <mat-card-title class="card-container-center">Appointment</mat-card-title>
+  </mat-card-header>
+<mat-card-content class="container">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+    <td>
+      <mat-form-field class="example-full-width">
+        <mat-label>Select Service</mat-label>
+        <mat-select [(ngModel)]="serviceID" formControlName="ServiceID" (ngModelChange)="onServiceSelection(serviceID)" required>Select Service
+          <mat-option *ngFor="let service of services" value="{{service.id}}">{{service.ServiceName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </td>
+    <td>
+      <mat-form-field class="example-full-width">
+        <mat-label>Select Service Provider</mat-label>
+        <mat-select [(ngModel)]="serviceProviderID" formControlName="ServiceProviderID" [disabled]="!numberOfSP" (ngModelChange)="onServiceProviderSelection(serviceProviderID)" required>Select Service Provider
+          <mat-option *ngFor="let serviceProvider of serviceProviders" value="{{serviceProvider.ServiceProviderID}}">{{serviceProvider.FirstName}} {{serviceProvider.LastName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </td>
+    </tr>
+    <tr>
+    <td>
+      <mat-form-field color="accent" appearance="fill">
+        <mat-label>Date of Appointment</mat-label>
+        <input matInput formControlName="AppointmentDate" [matDatepicker]="picker" [min]="minDate" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </td>
+    <td>
+      <mat-form-field class="example-full-width">
+        <mat-label>Number Of Hours Required</mat-label>
+              <input matInput [(ngModel)]="totalTime" formControlName="Time" placeholder="Number of Hours" type="number" min="1" max="9" required>
+      </mat-form-field>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <mat-form-field class="example-full-width">
+        <mat-label>Select Address</mat-label>
+        <mat-select [(ngModel)]="addressID" class="address-select" formControlName="AddressID" required>Select Address
+          <mat-option *ngFor="let a of address" value="{{a.id}}" class="mat-option-address">
+            {{a.DoorNo}}, {{a.Street1}}, {{a.Street2}},<br> {{a.Area}}, {{a.City}}, {{a.State}},{{a.Pincode}},<br>{{a.ContactNo}},{{a.AltContactNo}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </td>
+    <td>
+      <mat-form-field class="example-full-width">
+        <mat-label>Selects Payment Mode</mat-label>
+        <mat-select [(ngModel)]="paymentId" formControlName="PaymentID" required>Select Payment Method
+          <mat-option *ngFor="let method of PaymentMethods" value="{{method.PaymentMode_ID}}">
+            {{method.Mode}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <button mat-raised-button type="submit" color="accent">Submit</button>
+    </td>
+  </tr>
+
+  </table>
+</form>
+</mat-card-content>
+</mat-card>
+
+</div>
+
+

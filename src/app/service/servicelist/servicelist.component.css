@@ -1,0 +1,26 @@
+table {
+  width: 90%;
+  margin: auto;
+  background-color: pink;
+}
+
+.mat-paginator {
+  width: 90%;
+  margin: auto;
+  background-color: pink;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 88%;
+  margin-top: 4%;
+  margin-left: 5%;
+  background-color: pink;
+  padding: 1%;
+}
+
+.add {
+  position: relative;
+  margin-left: 45%;
+  margin-top: 2%;
+}

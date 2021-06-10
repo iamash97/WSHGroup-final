@@ -1,0 +1,28 @@
+
+mat-card {
+  margin: auto;
+  margin-top: 2%;
+  width: 80%;
+  background-color: pink;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+input[type="file"] {
+  visibility: hidden;
+}
+
+.image-preview {
+  height: 5rem;
+  margin: 1rem 0;
+}
+
+.image-preview img {
+  height: 100%;
+}

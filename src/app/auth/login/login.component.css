@@ -1,0 +1,56 @@
+mat-card {
+  width: 20%;
+  margin-top: 12%;
+  margin-left: 65%;
+}
+mat-form-field {
+  width: 100%;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+.login_button {
+  width: 100%;
+}
+
+@media screen and (max-width: 992px) {
+  mat-card {
+    width: 30%;
+    margin-top: 15%;
+    margin-left: 65%;
+  }
+  mat-form-field {
+    width: 100%;
+  }
+
+  mat-spinner {
+    margin: auto;
+  }
+
+  .login_button {
+    width: 100%;
+  }
+}
+
+/* On screens that are 450px or less, set the background color to olive */
+@media screen and (max-width: 450px) {
+  mat-card {
+    width: 50%;
+    margin: auto;
+    margin-top: 10%;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  mat-spinner {
+    margin: auto;
+  }
+
+  .login_button {
+    width: 100%;
+  }
+}
